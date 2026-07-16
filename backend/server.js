@@ -55,6 +55,14 @@ const mountApiRoutes = () => {
 
 if (missingEnvVars.length === 0) {
     const connectWithFallbacks = async () => {
+        const isProduction = process.env.NODE_ENV === "production" || process.env.VERCEL === "1";
+        
+        if (isProduction) {
+            console.log("Production environment detected. Connecting directly to MONGO_URI...");
+            await connectDB();
+            return;
+        }
+
         const connectionTargets = [process.env.MONGO_URI, localMongoUri].filter(Boolean);
         let lastError;
 
