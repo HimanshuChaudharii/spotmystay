@@ -6,7 +6,16 @@
     "start": "npm run dev",
     "dev": "concurrently -n BACKEND,FRONTEND -c cyan,magenta \"npm --prefix backend start\" \"npm --prefix frontend run dev\"",
     "dev:backend": "npm --prefix backend start",
-    "dev:frontend": "npm --prefix frontend run dev"
+    "dev:frontend": "npm --prefix frontend run dev",
+    "build": "npm run build --prefix frontend"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.2.4",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.2.0"
   },
   "devDependencies": {
     "concurrently": "^9.2.1"
