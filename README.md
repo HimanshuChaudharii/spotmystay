@@ -1,5 +1,9 @@
 # SpotMyStay
 
+## 🌐 Live Demo
+
+🔗 **Live Website:** spotmystay.vercel.app
+
 > Discover, compare, and book hostels with a modern full-stack experience for students, travelers, and property owners.
 
 [![Version](https://img.shields.io/badge/version-1.0.0-0ea5e9.svg)](https://github.com/HimanshuChaudharii/spotmystay)
