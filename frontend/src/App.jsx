@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
@@ -11,14 +12,26 @@ import RequireAuth from "./components/RequireAuth";
 import AboutUs from "./pages/AboutUs";
 import Contact from "./pages/Contact";
 import Footer from "./components/Footer";
-
+import LoadingSpinner from "./components/LoadingSpinner";
 
 export default function App() {
+    const [isLoading, setIsLoading] = useState(false);
+
+    useEffect(() => {
+        const handleLoading = (e) => {
+            setIsLoading(e.detail);
+        };
+        window.addEventListener("axios-loading", handleLoading);
+        return () => window.removeEventListener("axios-loading", handleLoading);
+    }, []);
+
     return (
         <BrowserRouter>
-            <div className="flex flex-col min-h-screen">
+            <div className="relative flex flex-col min-h-screen">
+                {isLoading && <LoadingSpinner />}
                 <Navbar />
                 <main className="flex-grow pt-20">
+
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/about" element={<AboutUs />} />
