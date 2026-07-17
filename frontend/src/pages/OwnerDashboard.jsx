@@ -42,7 +42,7 @@ export default function OwnerDashboard() {
             fetchHostels();
             fetchBookings();
         }
-    }, [user]);
+    }, []);
 
     const handleAmenityChange = (e) => {
         const { value, checked } = e.target;
